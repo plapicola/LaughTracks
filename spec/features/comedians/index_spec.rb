@@ -64,5 +64,17 @@ RSpec.describe 'when I visit /comedians' do
         expect(page).to have_content("Uno")
       end
     end
+
+    it "I see a runtime in minutes for the comedian's specials" do
+      runtime = 35
+      Special.create(name: 'Uno', runtime: runtime, comedian_id: Comedian.first.id)
+      visit '/comedians'
+
+      id = Comedian.first.id
+
+      within "#comedian-#{id}" do
+        expect(page).to have_content("Runtime: #{runtime} minutes")
+      end
+    end
   end
 end
