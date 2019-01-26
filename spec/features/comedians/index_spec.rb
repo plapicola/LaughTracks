@@ -82,7 +82,7 @@ RSpec.describe 'when I visit /comedians' do
       it "including the averge age of comedians displayed" do
         expected = "Average Age: 30"
 
-        within '#statistics' do
+        within '.statistics' do
           expect(page).to have_content(expected)
         end
       end
@@ -94,7 +94,7 @@ RSpec.describe 'when I visit /comedians' do
 
         expected = "Averge Runtime: 40 minutes"
 
-        within '#statistics' do
+        within '.statistics' do
           expect(page).to have_content(expected)
         end
       end
@@ -102,7 +102,7 @@ RSpec.describe 'when I visit /comedians' do
       it "including a unique list of all cities displayed on the page" do
         expected = "Somewhere, Somewhere Else"
 
-        within '#statistics' do
+        within '.statistics' do
           expect(page).to have_content(expected)
         end
       end
