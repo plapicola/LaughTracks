@@ -2,7 +2,7 @@
   <section class="comedians" id="comedian-<%= comedian.id %>">
     <article class="comedian-info">
       <img src="<%= comedian.headshot %>" alt="Photo Of <%= comedian.name %>">
-      <h6><%= comedian.name %></h6>
+      <h4><%= comedian.name %></h4>
       <p>Age: <%= comedian.age %></p>
       <p>City: <%= comedian.birthplace %></p>
     </article>
@@ -11,9 +11,9 @@
         <% if special.comedian_id == comedian.id %>
           <section class="special" id="special-#{special.id}">
             <img src="<%= special.thumbnail %>" alt="<%= special.name %> Thumbnail">
-            <h6><%= special.name %></h6>
+            <h5><%= special.name %></h5>
             <p>Runtime: <%= special.runtime %></p>
-          </section>  
+          </section>
         <% end %>
       <% end %>
     </article>
