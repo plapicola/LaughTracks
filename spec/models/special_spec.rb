@@ -46,5 +46,21 @@ RSpec.describe Special do
         expect(actual.count).to eq(expected.count)
       end
     end
+
+    describe '.count_specials_by_comedian' do
+      it "returns a grouping of the count of specials by comedian id" do
+        Comedian.create(name: "Tim", age: 42, birthplace: "Somewhere")
+        Comedian.create(name: "Jim", age: 50, birthplace: "Somewhere Else")
+        tim = Comedian.first
+        jim = Comedian.last
+        Special.create(name: "Eighty", runtime: 80, comedian_id: tim.id)
+        Special.create(name: "Sixty", runtime: 60, comedian_id: jim.id)
+
+        expected = {tim.id => 1, jim.id => 1}
+        actual = Special.count_specials_by_comedian
+
+        expect(actual).to eq(expected)
+      end
+    end
   end
 end
