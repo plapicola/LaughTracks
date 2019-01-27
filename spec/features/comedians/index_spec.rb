@@ -127,6 +127,18 @@ RSpec.describe 'when I visit /comedians' do
           expect(page).to have_content(expected)
         end
       end
+
+      it "including a count of all specials displayed on the page" do
+        Special.create(name: 'Uno', runtime: 35, comedian_id: Comedian.first.id)
+        Special.create(name: 'Dos', runtime: 45, comedian_id: Comedian.first.id)
+        Special.create(name: 'Dos', runtime: 40, comedian_id: Comedian.last.id)
+
+        expected = Special.count
+
+        within '#special-count' do
+          expect(page).to have_content(expected)
+        end
+      end
     end
 
     context "with query ?age=42" do
