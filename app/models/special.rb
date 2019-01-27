@@ -5,7 +5,7 @@ class Special < ActiveRecord::Base
   belongs_to :comedian
 
   def self.average_runtime
-    average(:runtime)
+    average(:runtime).to_i
   end
 
   def self.specials_for_comedians(comedians = [])

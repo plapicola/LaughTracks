@@ -5,6 +5,7 @@ RSpec.describe 'when I visit /comedians' do
       Comedian.create(name: "Two", birthplace: "Somewhere Else", age: 45)
       Comedian.create(name: "Three", birthplace: "Somewhere", age: 3)
     end
+
     it 'I see a list of all comedians' do
       visit '/comedians'
 
@@ -62,6 +63,52 @@ RSpec.describe 'when I visit /comedians' do
 
       within "#comedian-#{id}" do
         expect(page).to have_content("Uno")
+      end
+    end
+
+    it "I see a runtime in minutes for the comedian's specials" do
+      runtime = 35
+      Special.create(name: 'Uno', runtime: runtime, comedian_id: Comedian.first.id)
+      visit '/comedians'
+
+      id = Comedian.first.id
+
+      within "#comedian-#{id}" do
+        expect(page).to have_content("Runtime: #{runtime} minutes")
+      end
+    end
+
+    describe "I see a collection of statistics at the top of the page" do
+      it "including the averge age of comedians displayed" do
+        expected = "Average Age:"
+
+        within '#average-age' do
+          expect(page).to have_content(expected)
+        end
+      end
+
+      it "including the average run length of all specials on the page" do
+        Special.create(name: 'Uno', runtime: 35, comedian_id: Comedian.first.id)
+        Special.create(name: 'Dos', runtime: 45, comedian_id: Comedian.first.id)
+        Special.create(name: 'Dos', runtime: 40, comedian_id: Comedian.last.id)
+
+        expected = "Average Runtime:"
+
+        within '#average-runtime' do
+          expect(page).to have_content(expected)
+        end
+      end
+
+      it "including a unique list of all cities displayed on the page" do
+        expected = "Somewhere Somewhere Else"
+
+        within '#city-list' do
+          expect(page).to have_content(expected)
+        end
+      end
+
+      context "with query age=42" do
+
       end
     end
   end

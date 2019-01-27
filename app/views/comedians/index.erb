@@ -1,3 +1,15 @@
+<section class="statistics">
+  <h5 class="statistic-item" id="average-age">Average Age:</h5>
+  <p class="statistic-item"><%= @average_age %></p>
+  <h5 class="statistic-item" id="average-runtime">Average Runtime:</h5>
+  <p class="statistic-item"><%= @average_runtime %> minutes</p>
+  <h5 class="statistic-item">Cities Represented:</h5>
+  <ul class="statistic-item" id="city-list">
+    <% @city_list.each do |city| %>
+      <li><%= city %></li>
+    <% end %>
+  </ul>
+</section>
 <% @comedians.each do |comedian| %>
   <section class="comedians" id="comedian-<%= comedian.id %>">
     <article class="comedian-info">
@@ -12,7 +24,7 @@
           <section class="special" id="special-#{special.id}">
             <img src="<%= special.thumbnail %>" alt="<%= special.name %> Thumbnail">
             <h5><%= special.name %></h5>
-            <p>Runtime: <%= special.runtime %></p>
+            <p>Runtime: <%= special.runtime %> minutes</p>
           </section>
         <% end %>
       <% end %>
