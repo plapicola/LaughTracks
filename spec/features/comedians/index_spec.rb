@@ -116,6 +116,7 @@ RSpec.describe 'when I visit /comedians' do
         end
       end
     end
+
     context "with query ?age=42" do
       it "displays only comedians of age 42" do
 
@@ -127,6 +128,16 @@ RSpec.describe 'when I visit /comedians' do
         end
         expect(page).to_not have_content("Two")
         expect(page).to_not have_content("Three")
+      end
+
+      it "restricts the information in the summary" do
+        visit '/comedians?age=42'
+
+        within '.statistics' do
+          expect(page).to have_content("42")
+          expect(page).to have_content("Somewhere")
+          expect(page).to_not have_content("Somewhere Else")
+        end
       end
     end
   end
