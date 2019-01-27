@@ -133,6 +133,8 @@ RSpec.describe 'when I visit /comedians' do
         Special.create(name: 'Dos', runtime: 45, comedian_id: Comedian.first.id)
         Special.create(name: 'Dos', runtime: 40, comedian_id: Comedian.last.id)
 
+        visit '/comedians'
+
         expected = Special.count
 
         within '#special-count' do
