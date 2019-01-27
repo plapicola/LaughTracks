@@ -157,11 +157,16 @@ RSpec.describe 'when I visit /comedians' do
       end
 
       it "restricts the information in the summary" do
+        Special.create(name: 'Uno', runtime: 35, comedian_id: Comedian.first.id)
+        Special.create(name: 'Dos', runtime: 45, comedian_id: Comedian.first.id)
+        Special.create(name: 'Dos', runtime: 40, comedian_id: Comedian.last.id)
+
         visit '/comedians?age=42'
 
         within '.statistics' do
           expect(page).to have_content("42")
           expect(page).to have_content("Somewhere")
+          expect(page).to have_content("2")
           expect(page).to_not have_content("Somewhere Else")
         end
       end
