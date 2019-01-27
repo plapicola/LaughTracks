@@ -100,11 +100,15 @@ RSpec.describe 'when I visit /comedians' do
       end
 
       it "including a unique list of all cities displayed on the page" do
-        expected = "Somewhere, Somewhere Else"
+        expected = "Somewhere Somewhere Else"
 
         within '#city-list' do
           expect(page).to have_content(expected)
         end
+      end
+
+      context "with query age=42" do
+
       end
     end
   end

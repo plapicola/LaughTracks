@@ -27,6 +27,10 @@ p {
   font-size: 12px;
 }
 
+ul {
+  list-style: none;
+}
+
 .comedians {
   padding-top: 3%;
   padding-bottom: 1%;
@@ -56,6 +60,29 @@ p {
   display: inline-block;
   padding-left: 15px;
   max-width: 17%;
+}
+
+.statistics {
+  display: flex;
+  align-items: center;
+  background-color: #222;
+  color: yellow;
+  height: 30px;
+}
+
+.statistic-item {
+  width: 15%;
+  height: 100%;
+  overflow: auto;
+}
+
+.statistics h5 {
+  text-align: right;
+}
+
+.statistics p {
+  padding-left: 5px;
+  text-align: left;
 }
 
 .comedian-info img {
