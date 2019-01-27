@@ -1,3 +1,17 @@
+<section class="statistics">
+  <article id="average-age">
+    <h3>Average Age:</h3>
+    <p><%= @average_age %></p>
+  </article>
+  <article id="average-runtime">
+    <h3>Average Runtime:</h3>
+    <p><%= @average_runtime %> minutes</p>
+  </article>
+  <article id="city-list">
+    <h3>Cities Represented:</h3>
+    <p><%= @city_list.join(", ") %></p>
+  </article>
+</section>
 <% @comedians.each do |comedian| %>
   <section class="comedians" id="comedian-<%= comedian.id %>">
     <article class="comedian-info">
