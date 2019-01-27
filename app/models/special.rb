@@ -11,4 +11,8 @@ class Special < ActiveRecord::Base
   def self.specials_for_comedians(comedians = [])
     where(comedian_id: comedians.map {|comedian| comedian.id})
   end
+
+  def self.count_specials_by_comedian
+    group(:comedian_id).count
+  end
 end
