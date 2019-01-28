@@ -18,15 +18,15 @@ RSpec.describe Comedian do
     end
   end
 
-  describe 'Relations' do
-    xit 'should have many specials' do
-      comic = Comedian.create(name: "Jim Gaffigan", age: 51, birthplace: "Somewhere")
-
-      actual = comic.specials
-
-      expect(actual).to_not raise_exception()
-    end
-  end
+  # describe 'Relations' do
+  #   it 'should have many specials' do
+  #     comic = Comedian.create(name: "Jim Gaffigan", age: 51, birthplace: "Somewhere")
+  #
+  #     actual = comic.specials
+  #
+  #     expect(actual).to_not raise_exception()
+  #   end
+  # end
 
   describe 'class methods' do
     before :each do
