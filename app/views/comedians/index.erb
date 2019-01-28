@@ -1,6 +1,8 @@
 <section class="statistics">
   <h5 class="statistic-item" id="average-age">Average Age:</h5>
   <p class="statistic-item"><%= @average_age %></p>
+  <h5 class="statistic-item">Specials Shown:</h5>
+  <p class="statistic-item" id="special-count"><%= @special_count %></p>
   <h5 class="statistic-item" id="average-runtime">Average Runtime:</h5>
   <p class="statistic-item"><%= @average_runtime %> minutes</p>
   <h5 class="statistic-item">Cities Represented:</h5>
@@ -17,6 +19,7 @@
       <h4><%= comedian.name %></h4>
       <p>Age: <%= comedian.age %></p>
       <p>City: <%= comedian.birthplace %></p>
+      <p>Count of Specials: <%= @specials_by_comedian[comedian.id] %></p>
     </article>
     <article class="specials">
       <% @specials.each do |special| %>
